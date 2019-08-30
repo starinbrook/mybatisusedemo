@@ -1,6 +1,7 @@
 package com.zhuyca.kkb.mapper;
 
 import com.zhuyca.kkb.entity.User;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @Title :
@@ -11,5 +12,20 @@ import com.zhuyca.kkb.entity.User;
  * @Copyright :     Copyright (c) 2016<br>
  */
 public interface UserMapper {
+    /**
+     * 使用XML
+     *
+     * @param id
+     * @return
+     */
     User selectUserById(int id);
+
+    /**
+     * 使用注解
+     *
+     * @param id
+     * @return
+     */
+    @Select("select * from user where id = #{id}")
+    User selectUserByIdUserAnnotation(int id);
 }

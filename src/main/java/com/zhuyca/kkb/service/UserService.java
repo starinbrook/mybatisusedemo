@@ -38,10 +38,14 @@ public class UserService {
             User user = (User) sqlSession.selectOne("com.zhuyca.kkb.mapper.UserMapper.selectUserById", 1);
             // 方式二：通过SqlSession获取Mapper类，然后再调用Mapper类的接口
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            // -- 基于XML映射方式
             User user1 = userMapper.selectUserById(1);
+            // -- 基于注解映射方式
+            User user2 = userMapper.selectUserByIdUserAnnotation(1);
 
             System.out.println(user.getId() + " " + user.getName() + " " + user.getSex() + " " + user.getAge());
             System.out.println(user1.getId() + " " + user1.getName() + " " + user1.getSex() + " " + user1.getAge());
+            System.out.println(user2.getId() + " " + user2.getName() + " " + user2.getSex() + " " + user2.getAge());
         } catch (IOException e) {
             e.printStackTrace();
         }
